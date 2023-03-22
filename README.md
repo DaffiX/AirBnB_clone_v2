@@ -3,7 +3,7 @@
 This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
 
 ---
-
+![](BnB.png)
 <center><h3>Repository Contents by Project Task</h3> </center>
 
 | Tasks | Files | Description |
@@ -140,3 +140,14 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 (hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'name': 'Fred the Frog', 'age': 9, 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
 ```
 <br>
+<br>
+## Storage :baggage_claim:
+
+The above classes are handled by the abstracted storage engine defined in the 
+[FileStorage](./models/engine/file_storage.py) class.
+
+Every time the backend is initialized, AirBnB instantiates an instance of 
+`FileStorage` called `storage`. The `storage` object is loaded/re-loaded from 
+any class instances stored in the JSON file `file.json`. As class instances are 
+created, updated, or deleted, the `storage` object is used to register 
+corresponding changes in the `file.json`.
